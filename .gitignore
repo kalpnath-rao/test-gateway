@@ -1,0 +1,8 @@
+/node_modules
+/supergraph.graphql
+/dist
+node_modules
+.env
+secrets
+.vscode
+.cursor

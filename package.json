@@ -1,0 +1,53 @@
+{
+  "name": "hive_gateway",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx mesh-compose -c ./src/mesh.config.ts -o supergraph.graphql",
+    "start": "npx hive-gateway -c src/gateway.config.ts supergraph ./supergraph.graphql",
+    "prepare": "husky",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "lint:check": "eslint \"{src,apps,libs,test}/**/*.ts\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "pre-commit": "npm run format && npm run lint && tsc --noEmit --pretty && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "6.21.0",
+    "@typescript-eslint/parser": "6.21.0",
+    "eslint": "8.57.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.1.3",
+    "husky": "9.1.7",
+    "lint-staged": "15.2.2",
+    "nodemon": "3.1.9",
+    "prettier": "3.2.5",
+    "ts-node": "10.9.2",
+    "typescript": "~5.3.3"
+  },
+  "dependencies": {
+    "@graphql-hive/core": "^0.12.0",
+    "@graphql-hive/gateway": "1.13.6",
+    "@graphql-hive/winston": "1.0.0-alpha-e8d806a3add8abe749aeaab952820831e9928986",
+    "@graphql-mesh/cli": "0.100.4",
+    "@graphql-mesh/compose-cli": "1.4.7",
+    "@graphql-mesh/graphql": "0.104.3",
+    "@graphql-mesh/openapi": "0.109.7",
+    "graphql": "16.10.0",
+    "mongoose": "8.10.1",
+    "winston": "3.17.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
+}
