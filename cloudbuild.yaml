@@ -27,7 +27,7 @@ steps:
 
 substitutions:
   _LOCATION: "us-east1"
-  _ENV: "dev"
+  _ENV: "development"
 
 options:
   substitution_option: "ALLOW_LOOSE"
