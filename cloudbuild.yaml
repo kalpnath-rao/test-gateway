@@ -1,5 +1,5 @@
 steps:
-  # 1. Detect branch/environment
+  # 1. Determine environment from branch name
   - name: "gcr.io/cloud-builders/gcloud"
     id: "check-branch-name"
     entrypoint: "bash"
@@ -14,21 +14,16 @@ steps:
         echo "$_ENV" > /workspace/env_var.txt
         echo "Using environment: $_ENV"
 
-  # 2. Simulate the build process (replace with real docker if needed later)
+  # 2. Simulate Gateway build (placeholder for actual build logic)
   - name: "gcr.io/cloud-builders/gcloud"
-    id: "simulate-docker-build"
+    id: "simulate-build"
     entrypoint: "bash"
     args:
       - "-c"
       - |
         _ENV=$(cat /workspace/env_var.txt)
         echo "Simulating Gateway build for environment: $_ENV"
-        echo "This is a placeholder. Replace with docker build/push logic later."
-
-availableSecrets:
-  secretManager:
-    - versionName: projects/$PROJECT_NUMBER/secrets/notifications-deploys-nmas/versions/latest
-      env: "URL_SLACK"
+        echo "This is a placeholder. Add Docker build/push logic here when ready."
 
 substitutions:
   _LOCATION: "us-east1"
